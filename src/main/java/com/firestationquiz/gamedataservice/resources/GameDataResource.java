@@ -20,6 +20,9 @@ public class GameDataResource {
     @Autowired
     private StationService service;
 
+    @Autowired
+    private QuestionController controller;
+
     @GetMapping()
     public List<Station> list() {
         return service.listAll();
@@ -27,7 +30,7 @@ public class GameDataResource {
 
     @RequestMapping("/new")
     public Question getQuestion() {
-        QuestionController questionController = new QuestionController();
-        return questionController.getNewQuestion();
+
+        return controller.getNewQuestion();
     }
 }
