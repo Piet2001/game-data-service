@@ -3,7 +3,6 @@ package com.firestationquiz.gamedataservice.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +13,6 @@ import javax.persistence.Id;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EnableAutoConfiguration
 public class Station {
 
     @Id
