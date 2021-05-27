@@ -8,8 +8,6 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest()
-@TestPropertySource("/application-test.properties")
-
 public class StationTests {
 
 	@Test
