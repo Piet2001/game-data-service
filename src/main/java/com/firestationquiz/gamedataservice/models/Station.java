@@ -1,28 +1,21 @@
 package com.firestationquiz.gamedataservice.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Station {
 
-    private String Name;
-    private String ImageUrl;
-
-    public Station(String name, String imageUrl) {
-        Name = name;
-        ImageUrl = imageUrl;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getImageUrl() {
-        return ImageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        ImageUrl = imageUrl;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String name;
+    private String imageUrl;
 }

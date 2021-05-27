@@ -2,43 +2,46 @@ package com.firestationquiz.gamedataservice.controllers;
 
 import com.firestationquiz.gamedataservice.models.Question;
 import com.firestationquiz.gamedataservice.models.Station;
-import com.firestationquiz.gamedataservice.repositories.StationRepository;
+import com.firestationquiz.gamedataservice.services.StationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
-import java.security.SecureRandom;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
+@Controller
 public class QuestionController {
 
-    private StationRepository stationRepo;
+    @Autowired
+    private StationService service;
 
     public Question getNewQuestion() {
-//        List<Station> stationList = stationRepo.getStations();
 
-        Question question1 = new Question(
-                "Helmond",
-                "https://media.discordapp.net/attachments/534476070192414730/824276101953880074/Brandweer_Helmond2.jpg",
-                "Asten",
-                "Eindhoven-Centrum",
-                "Helmond",
-                "Mierlo");
-
-        Question question2 = new Question(
-                "Deurne",
-                "https://media.discordapp.net/attachments/832601082500612137/832601422176583710/Post_Deurne_5-7-20192.jpg?width=960&height=540",
-                "Geldrop",
-                "Eindhoven-Woensel",
-                "Nuenen",
-                "Deurne");
+        List<Station> selected = new ArrayList<>();
+        while (selected.size() < 4){
+            Station newSelected = getRandomStation();
+            if (!selected.contains(newSelected)) {
+                selected.add(newSelected);
+            }
+        }
 
         Random random = new Random();
-        boolean first = random.nextBoolean();
+        Station ans = selected.get(random.nextInt(selected.size()));
 
-        if(first){
-            return question1;
-        }
-        else{
-            return question2;
-        }
+        return new Question(
+                ans.getName(),
+                ans.getImageUrl(),
+                selected.get(0).getName(),
+                selected.get(1).getName(),
+                selected.get(2).getName(),
+                selected.get(3).getName()
+        );
+
+    }
+
+    public Station getRandomStation(){
+        List<Station> stationList = service.listAll();
+
+        Random random = new Random();
+        return stationList.get(random.nextInt(stationList.size()));
     }
 }
