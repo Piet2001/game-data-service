@@ -5,10 +5,7 @@ import com.firestationquiz.gamedataservice.models.Question;
 import com.firestationquiz.gamedataservice.models.Station;
 import com.firestationquiz.gamedataservice.services.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,14 +20,19 @@ public class GameDataResource {
     @Autowired
     private QuestionController controller;
 
-    @GetMapping()
+    @GetMapping(value="/all")
     public List<Station> list() {
         return service.listAll();
     }
 
-    @RequestMapping("/new")
+    @GetMapping(value="/new")
     public Question getQuestion() {
-
         return controller.getNewQuestion();
+    }
+
+    @PutMapping(value="/newstation")
+    public Station saveStation(@RequestBody Station station)
+    {
+        return service.saveStation(station);
     }
 }

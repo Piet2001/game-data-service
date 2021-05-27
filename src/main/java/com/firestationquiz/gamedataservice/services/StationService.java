@@ -17,8 +17,8 @@ public class StationService {
         return repo.findAll();
     }
 
-    public void save(Station station) {
-        repo.save(station);
+    public Station saveStation(Station station) {
+       return repo.save(station);
     }
 
     public Station get(Integer id) {
