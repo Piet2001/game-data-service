@@ -14,17 +14,18 @@ public class QuestionController {
     @Autowired
     private StationService service;
 
+    private Random random = new Random();
+
     public Question getNewQuestion() {
 
         List<Station> selected = new ArrayList<>();
         while (selected.size() < 4){
-            Station newSelected = getRandomStation();
+            var newSelected = getRandomStation();
             if (!selected.contains(newSelected)) {
                 selected.add(newSelected);
             }
         }
 
-        Random random = new Random();
         Station ans = selected.get(random.nextInt(selected.size()));
 
         return new Question(
@@ -41,7 +42,6 @@ public class QuestionController {
     public Station getRandomStation(){
         List<Station> stationList = service.listAll();
 
-        Random random = new Random();
         return stationList.get(random.nextInt(stationList.size()));
     }
 }
