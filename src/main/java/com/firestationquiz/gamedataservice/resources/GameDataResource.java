@@ -21,7 +21,7 @@ public class GameDataResource {
     private QuestionController controller;
 
     @GetMapping(value="/all")
-    public List<Station> list() {
+    public List<Station> getAllStations() {
         return service.listAll();
     }
 
