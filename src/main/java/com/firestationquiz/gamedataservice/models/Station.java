@@ -18,9 +18,4 @@ public class Station {
     private Integer id;
     private String name;
     private String imageUrl;
-
-    public Station(String name, String imageUrl) {
-        this.name = name;
-        this.imageUrl = imageUrl;
-    }
 }

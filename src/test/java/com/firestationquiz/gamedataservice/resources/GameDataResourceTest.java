@@ -37,7 +37,7 @@ class GameDataResourceTest {
     @Test
     void saveStation() throws Exception {
 
-        Station station = new Station("Helmond","https://media.discordapp.net/attachments/534476070192414730/824276101953880074/Brandweer_Helmond2.jpg");
+        Station station = new Station(1,"Helmond","https://media.discordapp.net/attachments/534476070192414730/824276101953880074/Brandweer_Helmond2.jpg");
         String StationAsString = mapper.writeValueAsString(station);
 
         mvc.perform(put("/gamedata/newstation")
