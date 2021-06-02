@@ -15,6 +15,23 @@ public class StationTests {
 	void NameEqualsNameFromConstructor() {
 		Station station = new Station(1,"Helmond","https://media.discordapp.net/attachments/534476070192414730/824276101953880074/Brandweer_Helmond2.jpg");
 		assertThat(station.getName()).isEqualTo("Helmond");
+		assertThat(station.getImageUrl()).isEqualTo("https://media.discordapp.net/attachments/534476070192414730/824276101953880074/Brandweer_Helmond2.jpg");
+	}
+
+	@Test
+	void TwoVaribleConstructor() {
+		Station station = new Station("Test Station", "This is a link ;)");
+		assertThat(station.getName()).isEqualTo("Test Station");
+		assertThat(station.getImageUrl()).isEqualTo("This is a link ;)");
+	}
+
+	@Test
+	void NameNotEqualToOldAfterSet() {
+		Station station = new Station("Test Station", "This is a link ;)");
+		station.setName("Another Name");
+		assertThat(station.getName()).isNotEqualTo("Test Station");
+		assertThat(station.getImageUrl()).isEqualTo("This is a link ;)");
+		assertThat(station.getName()).isEqualTo("Another Name");
 	}
 
 }
