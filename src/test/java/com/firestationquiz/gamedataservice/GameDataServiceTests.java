@@ -9,7 +9,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ActiveProfiles("test")
 @SpringBootTest()
-public class GameDataServiceTests {
+class GameDataServiceTests {
 
     @Test
     void contextLoads() {
