@@ -21,13 +21,6 @@ class StationTest {
     }
 
     @Test
-    void TwoVaribleConstructor() {
-        Station station = new Station(1, "Test Station", "This is a link ;)");
-        assertThat(station.getName()).isEqualTo("Test Station");
-        assertThat(station.getImageUrl()).isEqualTo("This is a link ;)");
-    }
-
-    @Test
     void NameNotEqualToOldAfterSet() {
         Station station = new Station(1, "Test Station", "This is a link ;)");
         station.setName("Another Name");
