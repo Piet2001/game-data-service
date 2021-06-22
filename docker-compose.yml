@@ -1,21 +1,6 @@
 version: '3.7'
 
 services:
-#    mysqldb:
-#      container_name: mysqldb
-#      image: mysql:5.7
-#      command: --default-authentication-plugin=mysql_native_password
-#      environment:
-#        - MYSQL_ROOT_PASSWORD=root
-#        - MYSQL_DATABASE=firestationquiz
-#      volumes:
-#        - db-data:/var/lib/mysql
-#      ports:
-#        - "3307:3306"
-#      restart: always
-#      networks:
-#        - game-data-network
-    
     game-data-service:
         container_name: data-service
         build:
@@ -24,18 +9,9 @@ services:
         image: game-data-service
         ports:
             - "8084:8084"
-#        depends_on:
-#            - mysqldb
-#        environment:
-#          SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/firestationquiz?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
-#          SPRING_DATASOURCE_USERNAME: root
-#          SPRING_DATASOURCE_PASSWORD: root
         networks:
           - game-data-network
         restart: always
-
-volumes:
-  db-data: {}
 
 networks:
   game-data-network:
